@@ -780,21 +780,10 @@
   resolved "https://registry.yarnpkg.com/@google/generative-ai/-/generative-ai-0.23.0.tgz#e5b8add3a394ae7c64b46ca06c85540d8ac65d55"
   integrity sha512-8vGoguvLG22U3t9XpXvbxjxy/yfBhE27pqptz5QVKXwBSh9sUXXmZWS8ZdGMqifK7kiuZQCG2cjGJNUdBsgX+g==
 
-"@graphai/agent_filters@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@graphai/agent_filters/-/agent_filters-1.0.0.tgz#29712386a45d3fe4c3dfd3f8436baf58c1e8dde2"
-  integrity sha512-PCHXQ6p/y+4/z9LKPx2JoDuOlBGUzOUpMfeB62tTRIMuLmc5cOMlg7+P9asJCwgjCsl1dIPEIKvoBJnotT3EPA==
-  dependencies:
-    "@noble/hashes" "^1.7.1"
-    ajv "^8.16.0"
-
-"@graphai/agent_filters@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@graphai/agent_filters/-/agent_filters-1.0.1.tgz#9520ec7baa969574b7043e1d11cb5aa0b0d4f80e"
-  integrity sha512-KdBsaG48jQBdwKoY187NKuZBEgbQ1NLcXvrBXA6wLWEtJ7ItnBCHEpu5m9I1l+1wbNu1xkYNi+dajCDjCD1npw==
-  dependencies:
-    "@noble/hashes" "^1.7.1"
-    ajv "^8.16.0"
+"@graphai/agent_filter_utils@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@graphai/agent_filter_utils/-/agent_filter_utils-2.0.0.tgz#4b0c4aa7277540e1e5707c1609a998e2e73d1ba8"
+  integrity sha512-ChqtwP3DYGdJtmmtz/uojEayVoKXypYwbGefPzuQS90sGbvcFQCfq46yiaUSj5CTQehaqjkwHxw69897bSg9xw==
 
 "@graphai/agent_utils@^0.0.9":
   version "0.0.9"
@@ -899,6 +888,11 @@
   integrity sha512-OMI4Jap5V+uFGLi8IU6Pa7J3B0We/6xEyWA/f7JeaSfmtQs8/yv8wTtJHO+3E6WcUeiCGuuFy6+3ffFXwcO91g==
   dependencies:
     deepmerge "^4.3.1"
+
+"@graphai/stream_agent_filter@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@graphai/stream_agent_filter/-/stream_agent_filter-2.0.1.tgz#8f268bc0f9330b433ac18867a92c09612cb82a87"
+  integrity sha512-BeT7OW58inq7jM8tXk7Brhc772G2/6+7M8Sckta01WBIFDx6mQeyLXcth4gYUensGnrhvDTcE4FjI88r3SGBMQ==
 
 "@graphai/vanilla@^1.0.5", "@graphai/vanilla@^1.0.9":
   version "1.0.9"
@@ -1044,11 +1038,6 @@
   dependencies:
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
-
-"@noble/hashes@^1.7.1":
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/@noble/hashes/-/hashes-1.7.1.tgz#5738f6d765710921e7a751e00c20ae091ed8db0f"
-  integrity sha512-B8XBPsn4vT/KJAGqDzbwztd+6Yte3P4V7iafm24bxgDe/mlRuK6xmWPuCNrKt2vDafZ8MfJLlchDG/vYafQEjQ==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -1932,16 +1921,6 @@ ajv@^6.12.4:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-ajv@^8.16.0:
-  version "8.17.1"
-  resolved "https://registry.npmjs.org/ajv/-/ajv-8.17.1.tgz"
-  integrity sha512-B/gBuNg5SiMTrPkC+A2+cW0RszwxYmn6VYxB/inlBStS5nx6xHIt/ehKRhIMhqusl7a8LjQoZnjCs5vhwxOQ1g==
-  dependencies:
-    fast-deep-equal "^3.1.3"
-    fast-uri "^3.0.1"
-    json-schema-traverse "^1.0.0"
-    require-from-string "^2.0.2"
-
 alien-signals@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/alien-signals/-/alien-signals-1.0.4.tgz#c696a5dc9963fc648ae97093411d7e74b0a81ac0"
@@ -2753,11 +2732,6 @@ fast-levenshtein@^2.0.6:
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==
 
-fast-uri@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/fast-uri/-/fast-uri-3.0.1.tgz"
-  integrity sha512-MWipKbbYiYI0UC7cl8m/i/IWTqfC8YXsqjzybjddLsFjStroQzsHXkc73JutMvBiXmOvapk+axIl79ig5t55Bw==
-
 fastq@^1.6.0:
   version "1.18.0"
   resolved "https://registry.yarnpkg.com/fastq/-/fastq-1.18.0.tgz#d631d7e25faffea81887fe5ea8c9010e1b36fee0"
@@ -3250,11 +3224,6 @@ json-schema-traverse@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/json-schema-traverse/-/json-schema-traverse-0.4.1.tgz#69f6a87d9513ab8bb8fe63bdb0979c448e684660"
   integrity sha512-xbbCH5dCYU5T8LcEhhuh7HJ88HXuW3qsI3Y0zOZFKfZEHcpWiHU/Jxzk629Brsab/mMiHQti9wMP+845RPe3Vg==
-
-json-schema-traverse@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/json-schema-traverse/-/json-schema-traverse-1.0.0.tgz"
-  integrity sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==
 
 json-stable-stringify-without-jsonify@^1.0.1:
   version "1.0.1"
@@ -3927,11 +3896,6 @@ require-directory@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/require-directory/-/require-directory-2.1.1.tgz#8c64ad5fd30dab1c976e2344ffe7f792a6a6df42"
   integrity sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==
-
-require-from-string@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.npmjs.org/require-from-string/-/require-from-string-2.0.2.tgz"
-  integrity sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==
 
 resolve-from@^4.0.0:
   version "4.0.0"

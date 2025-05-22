@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.streamAgentDispatcher = exports.nonStreamAgentDispatcher = exports.agentRunner = exports.agentDispatcher = exports.agentDoc = exports.agentsList = exports.updateAgentVerbose = void 0;
-const agent_filters_1 = require("@graphai/agent_filters");
+const stream_agent_filter_1 = require("@graphai/stream_agent_filter");
+const agent_filter_utils_1 = require("@graphai/agent_filter_utils");
 const type_1 = require("./type");
 const utils_1 = require("./utils");
 let graphaiExpressVerbose = false;
@@ -129,7 +130,7 @@ const streamAgentDispatcher = (agentDictionary, agentFilters = [], isDispatch = 
             };
             const streamAgentFilter = {
                 name: "streamAgentFilter",
-                agent: (0, agent_filters_1.streamAgentFilterGenerator)(callback),
+                agent: (0, stream_agent_filter_1.streamAgentFilterGenerator)(callback),
             };
             const filterList = [...agentFilters, streamAgentFilter];
             const dispatcher = agentDispatcherInternal(agentDictionary, filterList, isDispatch);
@@ -171,7 +172,7 @@ const agentDispatcherInternal = (agentDictionary, agentFilters = [], isDispatch 
             const { agents: __nonLog, ...logContext } = context;
             console.log("agentDispatcherInternal(context): ", logContext);
         }
-        const agentFilterRunner = (0, agent_filters_1.agentFilterRunnerBuilder)(agentFilters);
+        const agentFilterRunner = (0, agent_filter_utils_1.agentFilterRunnerBuilder)(agentFilters);
         const result = await agentFilterRunner(context, agent.agent);
         return result;
     };

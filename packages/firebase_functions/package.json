@@ -26,10 +26,10 @@
     "url": "https://github.com/receptron/graphai_utils/issues"
   },
   "homepage": "https://github.com/receptron/graphai_utils/tree/main/packages/firebase_functions#readme",
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
-    "@graphai/agent_filters": "^1.0.1"
+    "@graphai/agent_filter_utils": "^2.0.0",
+    "@graphai/stream_agent_filter": "^2.0.1"
   },
   "types": "./lib/index.d.ts",
   "directories": {

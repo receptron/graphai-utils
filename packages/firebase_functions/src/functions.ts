@@ -1,4 +1,5 @@
-import { streamAgentFilterGenerator, agentFilterRunnerBuilder } from "@graphai/agent_filters";
+import { streamAgentFilterGenerator } from "@graphai/stream_agent_filter";
+import { agentFilterRunnerBuilder } from "@graphai/agent_filter_utils";
 
 import { HttpsError } from "firebase-functions/v2/https";
 
