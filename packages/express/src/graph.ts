@@ -1,6 +1,6 @@
 import { GraphAI } from "graphai";
 import express from "express";
-import { streamAgentFilterGenerator } from "@graphai/agent_filters";
+import { streamAgentFilterGenerator } from "@graphai/stream_agent_filter";
 
 import { DefaultEndOfStreamDelimiter } from "./type";
 import { defaultContentCallback } from "./utils";

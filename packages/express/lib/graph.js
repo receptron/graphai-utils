@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.nonStreamGraphRunner = exports.streamGraphRunner = exports.graphRunner = void 0;
 const graphai_1 = require("graphai");
-const agent_filters_1 = require("@graphai/agent_filters");
+const stream_agent_filter_1 = require("@graphai/stream_agent_filter");
 const type_1 = require("./type");
 const utils_1 = require("./utils");
 const graphRunner = (agentDictionary, agentFilters = [], streamChunkCallback, contentCallback = utils_1.defaultContentCallback, endOfStreamDelimiter = type_1.DefaultEndOfStreamDelimiter, onLogCallback = (__log, __isUpdate) => { }) => {
@@ -35,7 +35,7 @@ const streamGraphRunner = (agentDictionary, agentFilters = [], streamChunkCallba
             };
             const streamAgentFilter = {
                 name: "streamAgentFilter",
-                agent: (0, agent_filters_1.streamAgentFilterGenerator)(streamCallback),
+                agent: (0, stream_agent_filter_1.streamAgentFilterGenerator)(streamCallback),
             };
             const filterList = [...agentFilters, streamAgentFilter];
             const dispatcher = streamGraphRunnerInternal(agentDictionary, filterList, onLogCallback);

@@ -1,7 +1,8 @@
 import express from "express";
 
 import type { AgentFunctionInfoDictionary, AgentFilterInfo, AgentFunctionContext } from "graphai";
-import { streamAgentFilterGenerator, agentFilterRunnerBuilder } from "@graphai/agent_filters";
+import { streamAgentFilterGenerator } from "@graphai/stream_agent_filter";
+import { agentFilterRunnerBuilder } from "@graphai/agent_filter_utils";
 import { ExpressAgentInfo, StreamChunkCallback, ContentCallback } from "./type";
 
 import { DefaultEndOfStreamDelimiter } from "./type";

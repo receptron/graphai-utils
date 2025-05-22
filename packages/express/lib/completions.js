@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.completionRunner = void 0;
 const graphai_1 = require("graphai");
-const agent_filters_1 = require("@graphai/agent_filters");
+const stream_agent_filter_1 = require("@graphai/stream_agent_filter");
 const crypto_1 = require("crypto");
 // TODO choise graph(done)
 // stream flag(done);
@@ -84,7 +84,7 @@ const streamGraphRunner = (agentDictionary, model2GraphData, agentFilters = [], 
             };
             const streamAgentFilter = {
                 name: "streamAgentFilter",
-                agent: (0, agent_filters_1.streamAgentFilterGenerator)(streamCallback),
+                agent: (0, stream_agent_filter_1.streamAgentFilterGenerator)(streamCallback),
             };
             const filterList = [...agentFilters, streamAgentFilter];
             res.write(streamCompletionChunkCallback(baseData, "start"));

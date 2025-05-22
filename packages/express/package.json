@@ -32,7 +32,8 @@
     "sinon-express-mock": "^2.2.1"
   },
   "dependencies": {
-    "@graphai/agent_filters": "^1.0.0",
+    "@graphai/agent_filter_utils": "^2.0.0",
+    "@graphai/stream_agent_filter": "^2.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2"
