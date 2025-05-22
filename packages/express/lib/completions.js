@@ -38,7 +38,7 @@ const completionRunner = (agentDictionary, model2GraphData, agentFilters = [], o
         const { stream, model, messages } = req.body;
         // validation
         if (!model || typeof model !== "string") {
-            return res.status(400).json({
+            res.status(400).json({
                 error: {
                     message: "`model` is required and must be a string",
                     type: "invalid_request_error",
@@ -46,9 +46,10 @@ const completionRunner = (agentDictionary, model2GraphData, agentFilters = [], o
                     code: "invalid_model",
                 },
             });
+            return;
         }
         if (!messages || !Array.isArray(messages) || messages.length === 0) {
-            return res.status(400).json({
+            res.status(400).json({
                 error: {
                     message: "`messages` must be an array of objects with `role` and `content` as strings",
                     type: "invalid_request_error",
@@ -56,6 +57,7 @@ const completionRunner = (agentDictionary, model2GraphData, agentFilters = [], o
                     code: "invalid_messages",
                 },
             });
+            return;
         }
         // const isStreaming = (req.headers["content-type"] || "").startsWith("text/event-stream")
         if (stream) {
@@ -97,7 +99,7 @@ const streamGraphRunner = (agentDictionary, model2GraphData, agentFilters = [], 
             catch (__err) {
                 res.write(`data: ${JSON.stringify({ error: "GraphAI Something went wrong" })}\n\n`);
             }
-            return res.end();
+            res.end();
         }
         catch (e) {
             next(e);
@@ -109,7 +111,7 @@ const nonStreamGraphRunner = (agentDictionary, model2GraphData, agentFilters = [
         try {
             const dispatcher = streamGraphRunnerInternal(agentDictionary, model2GraphData, agentFilters, onLogCallback);
             const result = await dispatcher(req);
-            return res.json(result);
+            res.json(result);
         }
         catch (e) {
             next(e);

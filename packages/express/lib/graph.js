@@ -44,7 +44,7 @@ const streamGraphRunner = (agentDictionary, agentFilters = [], streamChunkCallba
                 res.write(endOfStreamDelimiter);
             }
             res.write(contentCallback(result));
-            return res.end();
+            res.end();
         }
         catch (e) {
             next(e);
@@ -57,7 +57,7 @@ const nonStreamGraphRunner = (agentDictionary, agentFilters = [], onLogCallback 
         try {
             const dispatcher = streamGraphRunnerInternal(agentDictionary, agentFilters, onLogCallback);
             const result = await dispatcher(req);
-            return res.json(result);
+            res.json(result);
         }
         catch (e) {
             next(e);

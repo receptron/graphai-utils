@@ -122,7 +122,7 @@ export const nonStreamAgentDispatcher = (agentDictionary: AgentFunctionInfoDicti
     try {
       const dispatcher = agentDispatcherInternal(agentDictionary, agentFilters, isDispatch);
       const result = await dispatcher(req, res);
-      return res.json(result);
+      res.json(result);
     } catch (e) {
       next(e);
     }
@@ -170,7 +170,7 @@ export const streamAgentDispatcher = (
         res.write(endOfStreamDelimiter);
       }
       res.write(contentCallback(result));
-      return res.end();
+      res.end();
     } catch (e) {
       next(e);
     }

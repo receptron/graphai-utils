@@ -99,7 +99,7 @@ const nonStreamAgentDispatcher = (agentDictionary, agentFilters = [], isDispatch
         try {
             const dispatcher = agentDispatcherInternal(agentDictionary, agentFilters, isDispatch);
             const result = await dispatcher(req, res);
-            return res.json(result);
+            res.json(result);
         }
         catch (e) {
             next(e);
@@ -139,7 +139,7 @@ const streamAgentDispatcher = (agentDictionary, agentFilters = [], isDispatch = 
                 res.write(endOfStreamDelimiter);
             }
             res.write(contentCallback(result));
-            return res.end();
+            res.end();
         }
         catch (e) {
             next(e);
