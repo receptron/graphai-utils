@@ -1,6 +1,6 @@
 {
   "name": "@receptron/graphai_express_type",
-  "version": "0.1.2",
+  "version": "2.0.0",
   "description": "Type file of @receptron/graphai_express. This is for browser.",
   "main": "lib/type.js",
   "files": [
