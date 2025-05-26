@@ -19,11 +19,22 @@ export const graphData = {
     // event
     oneEvent: {
       agent: "eventAgent",
-      params: { type: "button" },
+      params: { type: "button", name: "button event" },
     },
     twoEvent: {
       agent: "eventAgent",
-      params: { type: "text" },
+      params: { type: "text", name: "text event" },
+      inputs: { data: [":oneEvent"] },
+    },
+    threeEvent: {
+      agent: "eventAgent",
+      params: { type: "button", name: "button event" },
+      inputs: { data: [":oneEvent"] },
+    },
+    fourEvent: {
+      agent: "eventAgent",
+      params: { type: "button", name: "button event" },
+      inputs: { data: [":threeEvent"] },
     },
   },
 };
