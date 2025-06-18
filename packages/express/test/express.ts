@@ -2,7 +2,8 @@
 import "dotenv/config";
 
 import express from "express";
-import type { AgentFunctionInfoDictionary, TransactionLog } from "graphai";
+import type { AgentFunctionInfoDictionary, TransactionLog, AgentFunction } from "graphai";
+import { agentInfoWrapper } from "graphai";
 
 import * as agents from "@graphai/agents";
 import { llmGraphData, graphDictonary } from "./graph_data";
@@ -26,7 +27,13 @@ updateAgentVerbose(true);
 
 import cors from "cors";
 
-const agentDictionary: AgentFunctionInfoDictionary = agents;
+const configDebugAgent: AgentFunction = async ({ config }) => {
+  console.log(config);
+  return config ?? {};
+};
+const configDebugAgentInfo = agentInfoWrapper(configDebugAgent);
+
+const agentDictionary: AgentFunctionInfoDictionary = { ...agents, configDebugAgent: configDebugAgentInfo };
 
 const hostName = "https://example.net";
 const apiPrefix = "/api/agents";
@@ -60,6 +67,12 @@ const contentCallback: ContentCallback = (data) => {
   });
 };
 
+const config = {
+  global: { test: "global" },
+  configDebugAgent: { message: "config" },
+  testDebugAgent: { message2: "config2" },
+};
+
 const onLogCallback = (log: TransactionLog, __isUpdate: boolean) => {
   console.log(log);
 };
@@ -75,14 +88,14 @@ app.get(apiPrefix + "/", agentsList(agentDictionary, hostName, apiPrefix));
 app.post(apiPrefix + "/", agentRunner(agentDictionary));
 
 // agent
-app.post(apiPrefix + "/:agentId", agentDispatcher(agentDictionary));
+app.post(apiPrefix + "/:agentId", agentDispatcher(agentDictionary, [], undefined, config, contentCallback));
 
 app.post(apiPrefix + "/:agentId/stream", agentDispatcher(agentDictionary, [], streamChunkCallback));
 
 // agent non stream
-app.post(apiPrefix + "/nonstream/:agentId", nonStreamAgentDispatcher(agentDictionary));
+app.post(apiPrefix + "/nonstream/:agentId", nonStreamAgentDispatcher(agentDictionary, [], true, config));
 // agent stream
-app.post(apiPrefix + "/stream/:agentId", streamAgentDispatcher(agentDictionary));
+app.post(apiPrefix + "/stream/:agentId", streamAgentDispatcher(agentDictionary, [], true, streamChunkCallback, config));
 
 // graph
 app.post(apiGraphPrefix + "/", graphRunner(agentDictionary, [], streamChunkCallback, contentCallback, ""));

@@ -61,9 +61,9 @@ const agentDoc = (agentDictionary, hostName = "https://example.com", urlPath = "
     };
 };
 exports.agentDoc = agentDoc;
-const __agentDispatcher = (agentDictionary, agentFilters = [], streamChunkCallback, contentCallback = utils_1.defaultContentCallback, isDispatch = true) => {
-    const nonStram = (0, exports.nonStreamAgentDispatcher)(agentDictionary, agentFilters, isDispatch);
-    const stream = (0, exports.streamAgentDispatcher)(agentDictionary, agentFilters, isDispatch, streamChunkCallback, contentCallback);
+const __agentDispatcher = (agentDictionary, agentFilters = [], streamChunkCallback, contentCallback = utils_1.defaultContentCallback, isDispatch = true, config = {}) => {
+    const nonStram = (0, exports.nonStreamAgentDispatcher)(agentDictionary, agentFilters, isDispatch, config);
+    const stream = (0, exports.streamAgentDispatcher)(agentDictionary, agentFilters, isDispatch, streamChunkCallback, config, contentCallback, type_1.DefaultEndOfStreamDelimiter);
     return async (req, res, next) => {
         const isStreaming = (req.headers["content-type"] || "").startsWith("text/event-stream");
         if (graphaiExpressVerbose) {
@@ -78,26 +78,26 @@ const __agentDispatcher = (agentDictionary, agentFilters = [], streamChunkCallba
 // express middleware
 // dispatch and run agent
 // app.post(apiPrefix + "/:agentId", agentDispatcher(agentDictionary));
-const agentDispatcher = (agentDictionary, agentFilters = [], streamChunkCallback, contentCallback = utils_1.defaultContentCallback) => {
-    return __agentDispatcher(agentDictionary, agentFilters, streamChunkCallback, contentCallback, true);
+const agentDispatcher = (agentDictionary, agentFilters = [], streamChunkCallback, config = {}, contentCallback = utils_1.defaultContentCallback) => {
+    return __agentDispatcher(agentDictionary, agentFilters, streamChunkCallback, contentCallback, true, config);
 };
 exports.agentDispatcher = agentDispatcher;
 // express middleware
 // run agent
 // app.post(agentPrefix, agentRunner(agentDictionary));
-const agentRunner = (agentDictionary, agentFilters = [], streamChunkCallback, contentCallback = utils_1.defaultContentCallback) => {
-    return __agentDispatcher(agentDictionary, agentFilters, streamChunkCallback, contentCallback, false);
+const agentRunner = (agentDictionary, agentFilters = [], streamChunkCallback, config = {}, contentCallback = utils_1.defaultContentCallback) => {
+    return __agentDispatcher(agentDictionary, agentFilters, streamChunkCallback, contentCallback, false, config);
 };
 exports.agentRunner = agentRunner;
 // express middleware
 // run agent
-const nonStreamAgentDispatcher = (agentDictionary, agentFilters = [], isDispatch = true) => {
+const nonStreamAgentDispatcher = (agentDictionary, agentFilters = [], isDispatch = true, config = {}) => {
     return async (req, res, next) => {
         if (graphaiExpressVerbose) {
             console.log("nonStreamAgentDispatcher");
         }
         try {
-            const dispatcher = agentDispatcherInternal(agentDictionary, agentFilters, isDispatch);
+            const dispatcher = agentDispatcherInternal(agentDictionary, agentFilters, isDispatch, config);
             const result = await dispatcher(req, res);
             res.json(result);
         }
@@ -109,7 +109,7 @@ const nonStreamAgentDispatcher = (agentDictionary, agentFilters = [], isDispatch
 exports.nonStreamAgentDispatcher = nonStreamAgentDispatcher;
 // express middleware
 // run agent with streaming
-const streamAgentDispatcher = (agentDictionary, agentFilters = [], isDispatch = true, streamChunkCallback, contentCallback = utils_1.defaultContentCallback, endOfStreamDelimiter = type_1.DefaultEndOfStreamDelimiter) => {
+const streamAgentDispatcher = (agentDictionary, agentFilters = [], isDispatch = true, streamChunkCallback, config = {}, contentCallback = utils_1.defaultContentCallback, endOfStreamDelimiter = type_1.DefaultEndOfStreamDelimiter) => {
     return async (req, res, next) => {
         if (graphaiExpressVerbose) {
             console.log("streamAgentDispatcher");
@@ -133,7 +133,7 @@ const streamAgentDispatcher = (agentDictionary, agentFilters = [], isDispatch = 
                 agent: (0, stream_agent_filter_1.streamAgentFilterGenerator)(callback),
             };
             const filterList = [...agentFilters, streamAgentFilter];
-            const dispatcher = agentDispatcherInternal(agentDictionary, filterList, isDispatch);
+            const dispatcher = agentDispatcherInternal(agentDictionary, filterList, isDispatch, config);
             const result = await dispatcher(req, res);
             if (endOfStreamDelimiter !== "") {
                 res.write(endOfStreamDelimiter);
@@ -147,8 +147,17 @@ const streamAgentDispatcher = (agentDictionary, agentFilters = [], isDispatch = 
     };
 };
 exports.streamAgentDispatcher = streamAgentDispatcher;
+const getConfig = (config, agentId) => {
+    if (agentId) {
+        return {
+            ...(config["global"] ?? {}),
+            ...(config[agentId] ?? {}),
+        };
+    }
+    return {};
+};
 // dispatcher internal function
-const agentDispatcherInternal = (agentDictionary, agentFilters = [], isDispatch = true) => {
+const agentDispatcherInternal = (agentDictionary, agentFilters = [], isDispatch = true, config = {}) => {
     return async (req, res) => {
         if (graphaiExpressVerbose) {
             console.log("agentDispatcherInternal");
@@ -167,6 +176,7 @@ const agentDispatcherInternal = (agentDictionary, agentFilters = [], isDispatch 
             debugInfo,
             agents: agentDictionary,
             filterParams,
+            config: getConfig(config, agentId),
         };
         if (graphaiExpressVerbose) {
             const { agents: __nonLog, ...logContext } = context;

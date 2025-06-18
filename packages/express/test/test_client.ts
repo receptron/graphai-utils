@@ -73,6 +73,48 @@ test("test nonstream echo agent", async () => {
   assert.deepStrictEqual(res, { message: "this is test" });
 });
 
+test("test nonstream config agent", async () => {
+  const res = await request("http://localhost:8085/api/agents/nonstream/configDebugAgent", {
+    params: {
+      message: "this is test",
+    },
+    debugInfo: {
+      verbose: false,
+      nodeId: "123",
+      retry: 2,
+      state: NodeState.Executing,
+      subGraphs: new Map(),
+    },
+    namedInputs: {},
+    filterParams: {},
+  });
+  assert.deepStrictEqual(res, {
+    message: "config",
+    test: "global",
+  });
+});
+
+test("test config agent", async () => {
+  const res = await request("http://localhost:8085/api/agents/configDebugAgent", {
+    params: {
+      message: "this is test",
+    },
+    debugInfo: {
+      verbose: false,
+      nodeId: "123",
+      retry: 2,
+      state: NodeState.Executing,
+      subGraphs: new Map(),
+    },
+    namedInputs: {},
+    filterParams: {},
+  });
+  assert.deepStrictEqual(res, {
+    message: "config",
+    test: "global",
+  });
+});
+
 test("test graph", async () => {
   const res = await request2("http://localhost:8085/api/graph/", {
     graphData: {
