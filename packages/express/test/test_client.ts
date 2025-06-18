@@ -89,8 +89,8 @@ test("test nonstream config agent", async () => {
     filterParams: {},
   });
   assert.deepStrictEqual(res, {
-    message: 'config',
-    test: 'global'
+    message: "config",
+    test: "global",
   });
 });
 
@@ -110,8 +110,8 @@ test("test config agent", async () => {
     filterParams: {},
   });
   assert.deepStrictEqual(res, {
-    message: 'config',
-    test: 'global'
+    message: "config",
+    test: "global",
   });
 });
 
