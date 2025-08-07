@@ -2,6 +2,7 @@
   "name": "@receptron/graphai_vue_cytoscape",
   "version": "0.2.0",
   "main": "lib/cytoscape.js",
+  "type": "module",
   "files": [
     "./lib"
   ],
