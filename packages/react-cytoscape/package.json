@@ -16,14 +16,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "cytoscape": "^3.32.0",
+    "cytoscape": "^3.33.0",
     "cytoscape-klay": "^3.1.4",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.29.0",
-    "@vitejs/plugin-react": "^4.4.1",
+    "@eslint/js": "^9.32.0",
+    "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.4.21"
   },
   "types": "./lib/cytoscape.d.ts",
