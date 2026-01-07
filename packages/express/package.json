@@ -37,7 +37,7 @@
     "@graphai/stream_agent_filter": "^2.0.2",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
-    "express": "^5.1.0"
+    "express": "^5.2.1"
   },
   "types": "./lib/index.d.ts",
   "directories": {
