@@ -28,7 +28,7 @@
   "homepage": "https://github.com/receptron/graphai_utils/tree/main/packages/express#readme",
   "devDependencies": {
     "@types/cors": "^2.8.18",
-    "@types/express-serve-static-core": "^5.0.6",
+    "@types/express-serve-static-core": "^5.1.0",
     "sinon": "^21.0.0",
     "sinon-express-mock": "^2.2.1"
   },
@@ -36,7 +36,7 @@
     "@graphai/agent_filter_utils": "^2.0.0",
     "@graphai/stream_agent_filter": "^2.0.2",
     "cors": "^2.8.5",
-    "dotenv": "^17.2.2",
+    "dotenv": "^17.2.3",
     "express": "^5.1.0"
   },
   "types": "./lib/index.d.ts",
