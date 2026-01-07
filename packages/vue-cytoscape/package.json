@@ -31,11 +31,11 @@
     "cytoscape-klay": "^3.1.4"
   },
   "devDependencies": {
-    "@types/cytoscape-klay": "^3.1.4",
-    "@vitejs/plugin-vue": "^6.0.1",
-    "@vue/tsconfig": "^0.7.0",
-    "vue": "^3.5.22",
-    "vue-tsc": "^3.0.8"
+    "@types/cytoscape-klay": "^3.1.5",
+    "@vitejs/plugin-vue": "^6.0.3",
+    "@vue/tsconfig": "^0.8.1",
+    "vue": "^3.5.26",
+    "vue-tsc": "^3.2.2"
   },
   "types": "./lib/cytoscape.d.ts",
   "directories": {
