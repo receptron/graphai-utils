@@ -28,8 +28,8 @@
   "homepage": "https://github.com/receptron/graphai_utils/tree/main/packages/express#readme",
   "devDependencies": {
     "@types/cors": "^2.8.18",
-    "@types/express-serve-static-core": "^5.1.0",
-    "sinon": "^21.0.0",
+    "@types/express-serve-static-core": "^5.1.1",
+    "sinon": "^21.0.1",
     "sinon-express-mock": "^2.2.1"
   },
   "dependencies": {
