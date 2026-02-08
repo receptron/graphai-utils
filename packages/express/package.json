@@ -34,9 +34,9 @@
   },
   "dependencies": {
     "@graphai/agent_filter_utils": "^2.0.0",
-    "@graphai/stream_agent_filter": "^2.0.2",
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
+    "@graphai/stream_agent_filter": "^2.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.4",
     "express": "^5.2.1"
   },
   "types": "./lib/index.d.ts",

@@ -29,11 +29,11 @@
   "homepage": "https://github.com/receptron/graphai_utils/tree/main/packages/vue-text-input-agent-generator#readme",
   "dependencies": {},
   "devDependencies": {
-    "@vitejs/plugin-vue": "^6.0.3",
+    "@vitejs/plugin-vue": "^6.0.4",
     "@vue/tsconfig": "^0.8.1",
     "vite": "^7.3.1",
-    "vue": "^3.5.26",
-    "vue-tsc": "^3.2.2"
+    "vue": "^3.5.27",
+    "vue-tsc": "^3.2.4"
   },
   "types": "./lib/index.d.ts",
   "directories": {
