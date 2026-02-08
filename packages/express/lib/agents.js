@@ -40,7 +40,7 @@ exports.agentsList = agentsList;
 const agentDoc = (agentDictionary, hostName = "https://example.com", urlPath = "/agent") => {
     return async (req, res) => {
         const { params } = req;
-        const { agentId } = params;
+        const agentId = Array.isArray(params.agentId) ? params.agentId[0] : params.agentId;
         const agent = agentDictionary[agentId];
         if (agent === undefined) {
             res.status(404).send("Not found");
@@ -163,7 +163,8 @@ const agentDispatcherInternal = (agentDictionary, agentFilters = [], isDispatch 
             console.log("agentDispatcherInternal");
         }
         const { params } = req;
-        const { agentId } = isDispatch ? params : req.body.debugInfo;
+        const agentIdRaw = isDispatch ? params.agentId : req.body.debugInfo.agentId;
+        const agentId = Array.isArray(agentIdRaw) ? agentIdRaw[0] : agentIdRaw;
         const { params: agentParams, debugInfo, filterParams, namedInputs /* graphData */ } = req.body;
         const agent = agentDictionary[agentId];
         if (agent === undefined) {
