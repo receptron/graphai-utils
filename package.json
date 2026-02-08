@@ -30,7 +30,7 @@
     "eslint-plugin-vue": "^10.7.0",
     "firebase": "^12.9.0",
     "firebase-functions": "^7.0.5",
-    "globals": "^16.4.0",
+    "globals": "^17.3.0",
     "graphai": "^2.0.16",
     "prettier": "^3.8.1",
     "rollup": "^4.57.1",
