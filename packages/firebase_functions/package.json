@@ -29,7 +29,7 @@
   "devDependencies": {},
   "dependencies": {
     "@graphai/agent_filter_utils": "^2.0.0",
-    "@graphai/stream_agent_filter": "^2.0.2"
+    "@graphai/stream_agent_filter": "^2.0.3"
   },
   "types": "./lib/index.d.ts",
   "directories": {
