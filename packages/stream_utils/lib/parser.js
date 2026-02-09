@@ -9,7 +9,7 @@ class ChunkParser {
     read(text) {
         this.buffer = this.buffer + text;
         const ret = [];
-        let res = null;
+        let res;
         do {
             res = null;
             if (this.buffer.slice(0, 1) === "{") {
