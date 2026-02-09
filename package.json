@@ -5,8 +5,8 @@
   "scripts": {
     "test": "yarn workspaces run test",
     "build": "yarn workspaces run build",
-    "eslint": "yarn workspaces run eslint",
-    "ci": "yarn run test && yarn run eslint && yarn run build",
+    "lint": "yarn workspaces run eslint",
+    "ci": "yarn run test && yarn run lint && yarn run build",
     "format": "yarn workspaces run format"
   },
   "private": true,
