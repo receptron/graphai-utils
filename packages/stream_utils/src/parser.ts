@@ -23,7 +23,7 @@ export class ChunkParser {
     this.buffer = this.buffer + text;
 
     const ret: StreamData[] = [];
-    let res: StreamData | null = null;
+    let res: StreamData | null;
     do {
       res = null;
       if (this.buffer.slice(0, 1) === "{") {
