@@ -1,5 +1,6 @@
 // express server example
-import "dotenv/config";
+import dotenv from "dotenv";
+dotenv.config({ quiet: true });
 
 import express from "express";
 import type { AgentFunctionInfoDictionary, TransactionLog, AgentFunction } from "graphai";
