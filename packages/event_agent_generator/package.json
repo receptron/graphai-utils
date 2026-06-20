@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc --esModuleInterop --declaration --outDir lib/ src/text_input_agent_generator.ts src/event_agent_generator.ts src/index.ts",
+    "build": "tsc -p tsconfig.build.json",
     "preview": "vite preview",
     "build-only": "vite build",
     "rollup": " npx rollup -c",
@@ -29,11 +29,11 @@
   "homepage": "https://github.com/receptron/graphai_utils/tree/main/packages/vue-text-input-agent-generator#readme",
   "dependencies": {},
   "devDependencies": {
-    "@vitejs/plugin-vue": "^6.0.4",
-    "@vue/tsconfig": "^0.8.1",
-    "vite": "^7.3.5",
-    "vue": "^3.5.27",
-    "vue-tsc": "^3.2.4"
+    "@vitejs/plugin-vue": "^6.0.7",
+    "@vue/tsconfig": "^0.9.1",
+    "vite": "^8.0.16",
+    "vue": "^3.5.38",
+    "vue-tsc": "^3.3.5"
   },
   "types": "./lib/index.d.ts",
   "directories": {

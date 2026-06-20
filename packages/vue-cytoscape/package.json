@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc --esModuleInterop --declaration --outDir lib/ src/composables/cytoscape.ts",
+    "build": "tsc -p tsconfig.build.json",
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
@@ -32,10 +32,10 @@
   },
   "devDependencies": {
     "@types/cytoscape-klay": "^3.1.5",
-    "@vitejs/plugin-vue": "^6.0.4",
-    "@vue/tsconfig": "^0.8.1",
-    "vue": "^3.5.27",
-    "vue-tsc": "^3.2.4"
+    "@vitejs/plugin-vue": "^6.0.7",
+    "@vue/tsconfig": "^0.9.1",
+    "vue": "^3.5.38",
+    "vue-tsc": "^3.3.5"
   },
   "types": "./lib/cytoscape.d.ts",
   "directories": {

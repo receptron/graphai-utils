@@ -9,10 +9,10 @@
   "scripts": {
     "build": "tsc && tsc-alias",
     "eslint": "eslint --fix",
-    "server": "ts-node -r tsconfig-paths/register test/express.ts",
-    "test_stream": "ts-node -r tsconfig-paths/register test/test_stream_client.ts",
-    "test_stream2": "ts-node -r tsconfig-paths/register test/test_stream_graph.ts",
-    "test": "node --test -r tsconfig-paths/register --require ts-node/register ./test/test_*.ts",
+    "server": "tsx test/express.ts",
+    "test_stream": "tsx test/test_stream_client.ts",
+    "test_stream2": "tsx test/test_stream_graph.ts",
+    "test": "node --import tsx --test ./test/test_*.ts",
     "format": "prettier --write '{src,test}/**/*.{yaml,ts,json}'",
     "ci": "yarn run format && yarn run eslint && yarn run build"
   },

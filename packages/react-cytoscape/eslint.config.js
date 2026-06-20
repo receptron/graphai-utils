@@ -19,6 +19,10 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
+      // react-hooks v7 promoted these React Compiler rules to errors; they flag this hook's
+      // intentional mutable-cytoscape pattern. Re-enable after an immutable refactor.
+      'react-hooks/immutability': 'off',
+      'react-hooks/set-state-in-effect': 'off',
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
