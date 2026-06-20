@@ -10,7 +10,7 @@
     "build": "tsc && tsc-alias",
     "eslint": "eslint src --fix",
     "format": "prettier --write '{src,tests}/**/*.ts'",
-    "test": "node --test --require ts-node/register ./tests/test_*.ts"
+    "test": "node --import tsx --test ./tests/test_*.ts"
   },
   "repository": {
     "type": "git",
