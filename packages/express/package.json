@@ -29,7 +29,7 @@
   "devDependencies": {
     "@types/cors": "^2.8.18",
     "@types/express-serve-static-core": "^5.1.2",
-    "sinon": "^21.0.1",
+    "sinon": "^22.1.0",
     "sinon-express-mock": "^2.2.1"
   },
   "dependencies": {
