@@ -7,7 +7,8 @@
     "build": "yarn workspaces run build",
     "lint": "yarn workspaces run eslint",
     "ci": "yarn run test && yarn run lint && yarn run build",
-    "format": "yarn workspaces run format"
+    "format": "yarn workspaces run format",
+    "knip": "knip"
   },
   "private": true,
   "devDependencies": {
@@ -21,8 +22,6 @@
     "@tailwindcss/vite": "^4.3.3",
     "@types/express": "^5.0.6",
     "@types/node": "^26.1.2",
-    "@types/sinon": "^22.0.0",
-    "@types/sinon-express-mock": "^1.3.12",
     "autoprefixer": "^10.5.4",
     "eslint": "^10.8.0",
     "eslint-config-prettier": "^10.1.8",
@@ -33,6 +32,7 @@
     "firebase-functions": "^7.3.2",
     "globals": "^17.8.0",
     "graphai": "^2.0.18",
+    "knip": "^6",
     "prettier": "^3.9.6",
     "rollup": "^4.62.3",
     "ts-node": "^10.9.2",
