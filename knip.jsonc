@@ -1,0 +1,30 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  // Yarn-workspaces monorepo: knip reads the root package.json "workspaces" field and analyzes
+  // each packages/* workspace on its own. Per workspace it auto-detects entries from that
+  // package.json (main/bin/exports/types point at the built lib/, and src/index.ts / src/main.ts
+  // are picked up as default entries) and treats the rest of the workspace source as project.
+  // No per-workspace overrides are needed for the scan to run across all eight packages.
+  "ignoreExportsUsedInFile": true,
+  "includeEntryExports": false,
+  // Each package commits its compiled lib/ (package.json "main"/"types" point there). That is
+  // build output, a byproduct of src, so it must not be analyzed as source — otherwise every
+  // lib/*.js shows up as an "unused file". Excluding it is the monorepo equivalent of scoping
+  // the project to src/**.
+  "ignore": ["**/lib/**"],
+  "rules": {
+    // Warn mode: every rule is "warn" (reported, exit 0) or "off". Nothing gates CI here.
+    "files": "warn",
+    "dependencies": "warn",
+    "devDependencies": "warn",
+    "unlisted": "warn",
+    "exports": "warn",
+    "types": "warn",
+    "unresolved": "off",
+    "binaries": "off",
+    "nsExports": "off",
+    "nsTypes": "off",
+    "enumMembers": "off",
+    "duplicates": "off",
+  },
+}
