@@ -27,15 +27,15 @@
   },
   "homepage": "https://github.com/receptron/graphai_utils/tree/main/packages/vue-cytoscape#readme",
   "dependencies": {
-    "cytoscape": "^3.34.0",
+    "cytoscape": "^3.34.3",
     "cytoscape-klay": "^3.1.4"
   },
   "devDependencies": {
     "@types/cytoscape-klay": "^3.1.5",
-    "@vitejs/plugin-vue": "^6.0.8",
+    "@vitejs/plugin-vue": "^6.0.9",
     "@vue/tsconfig": "^0.9.1",
-    "vue": "^3.5.40",
-    "vue-tsc": "^3.3.8"
+    "vue": "^3.5.43",
+    "vue-tsc": "^3.3.11"
   },
   "types": "./lib/cytoscape.d.ts",
   "directories": {
