@@ -9,7 +9,7 @@
   "scripts": {
     "build": "tsc && tsc-alias",
     "eslint": "eslint --fix",
-    "server": "tsx test/express.ts",
+    "server": "tsx test/server.ts",
     "test_stream": "tsx test/test_stream_client.ts",
     "test_stream2": "tsx test/test_stream_graph.ts",
     "test": "node --import tsx --test ./test/test_*.ts",

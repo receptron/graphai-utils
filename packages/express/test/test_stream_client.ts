@@ -8,6 +8,10 @@ import { AgentFunctionContext, NodeState } from "graphai";
 
 import { DefaultEndOfStreamDelimiter } from "@/type";
 
+import { useTestServer, testServerUrl } from "./helpers/server";
+
+useTestServer();
+
 async function* streamChatCompletion(url: string, postData: AgentFunctionContext & { agentId?: string }) {
   const { params, debugInfo, filterParams, agentId } = postData;
   const postBody = { params, debugInfo, filterParams, agentId };
@@ -63,7 +67,7 @@ const streamingRequest = async (url: string, postData: AgentFunctionContext & { 
 
 test("test stream echo agent/client 1", async () => {
   // stream dispatcher
-  await streamingRequest("http://localhost:8085/api/agents/stream/streamMockAgent", {
+  await streamingRequest(testServerUrl("/api/agents/stream/streamMockAgent"), {
     params: {
       message: "this is test",
     },
@@ -82,7 +86,7 @@ test("test stream echo agent/client 1", async () => {
 
 test("test stream echo agent/client 2", async () => {
   // dispatcher
-  await streamingRequest("http://localhost:8085/api/agents/streamMockAgent", {
+  await streamingRequest(testServerUrl("/api/agents/streamMockAgent"), {
     params: {
       message: "this is test",
     },
@@ -101,7 +105,7 @@ test("test stream echo agent/client 2", async () => {
 
 test("test stream echo agent/client 3", async () => {
   // dispatcher
-  await streamingRequest("http://localhost:8085/api/agents/streamMockAgent/stream", {
+  await streamingRequest(testServerUrl("/api/agents/streamMockAgent/stream"), {
     params: {
       message: "this is test",
     },
@@ -120,7 +124,7 @@ test("test stream echo agent/client 3", async () => {
 
 test("test stream echo agent/client 4", async () => {
   // runner
-  await streamingRequest("http://localhost:8085/api/agents", {
+  await streamingRequest(testServerUrl("/api/agents"), {
     params: {
       message: "this is test",
     },
