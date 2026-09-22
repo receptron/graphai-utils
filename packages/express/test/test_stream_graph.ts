@@ -7,6 +7,10 @@ import assert from "node:assert";
 import { DefaultEndOfStreamDelimiter } from "@/type";
 import { ChunkParser } from "@receptron/stream_utils";
 
+import { useTestServer, testServerUrl } from "./helpers/server";
+
+useTestServer();
+
 async function* streamChatCompletion(url: string, postData: any) {
   const completion = await fetch(url, {
     headers: {
@@ -68,7 +72,7 @@ test("test stream echo agent graph 1", async () => {
   // stream dispatcher
   const messages: string[] = [];
   await streamingRequest(
-    "http://localhost:8085/api/graph",
+    testServerUrl("/api/graph"),
     {
       graphData: {
         version: 0.5,
@@ -89,7 +93,7 @@ test("test stream echo agent graph 1", async () => {
 test("test stream echo agent graph 2", async () => {
   const messages: string[] = [];
   const content = await streamingRequest(
-    "http://localhost:8085/api/graph/stream",
+    testServerUrl("/api/graph/stream"),
     {
       graphData: {
         version: 0.5,

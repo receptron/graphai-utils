@@ -6,6 +6,10 @@ import { AgentFunctionContext, NodeState } from "graphai";
 import test from "node:test";
 import assert from "node:assert";
 
+import { useTestServer, testServerUrl } from "./helpers/server";
+
+useTestServer();
+
 const request = async (url: string, postData: AgentFunctionContext) => {
   const { params, debugInfo, filterParams } = postData;
   const postBody = { params, debugInfo, filterParams };
@@ -38,7 +42,7 @@ const request2 = async (url: string, postData: any) => {
 };
 
 test("test stream echo agent", async () => {
-  const res = await request("http://localhost:8085/api/agents/echoAgent", {
+  const res = await request(testServerUrl("/api/agents/echoAgent"), {
     params: {
       message: "this is test",
     },
@@ -56,7 +60,7 @@ test("test stream echo agent", async () => {
 });
 
 test("test nonstream echo agent", async () => {
-  const res = await request("http://localhost:8085/api/agents/nonstream/echoAgent", {
+  const res = await request(testServerUrl("/api/agents/nonstream/echoAgent"), {
     params: {
       message: "this is test",
     },
@@ -74,7 +78,7 @@ test("test nonstream echo agent", async () => {
 });
 
 test("test nonstream config agent", async () => {
-  const res = await request("http://localhost:8085/api/agents/nonstream/configDebugAgent", {
+  const res = await request(testServerUrl("/api/agents/nonstream/configDebugAgent"), {
     params: {
       message: "this is test",
     },
@@ -95,7 +99,7 @@ test("test nonstream config agent", async () => {
 });
 
 test("test config agent", async () => {
-  const res = await request("http://localhost:8085/api/agents/configDebugAgent", {
+  const res = await request(testServerUrl("/api/agents/configDebugAgent"), {
     params: {
       message: "this is test",
     },
@@ -116,7 +120,7 @@ test("test config agent", async () => {
 });
 
 test("test graph", async () => {
-  const res = await request2("http://localhost:8085/api/graph/", {
+  const res = await request2(testServerUrl("/api/graph/"), {
     graphData: {
       version: 0.5,
       nodes: {
@@ -135,7 +139,7 @@ test("test graph", async () => {
 
 test("test 404", async () => {
   // 404
-  const res = await request2("http://localhost:8085/api/gra/", {
+  const res = await request2(testServerUrl("/api/gra/"), {
     graphData: {
       version: 0.5,
       nodes: {
@@ -152,7 +156,7 @@ test("test 404", async () => {
 });
 
 test("test 500", async () => {
-  const res = await request2("http://localhost:8085/api/graph/", {
+  const res = await request2(testServerUrl("/api/graph/"), {
     graphData: 123,
   });
   assert.equal(res, 500);

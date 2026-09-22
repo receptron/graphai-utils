@@ -1,0 +1,3 @@
+# Windows checks out with core.autocrlf=true, which rewrites these LF files as
+# CRLF and trips eslint's linebreak-style rule.
+* text=auto eol=lf
