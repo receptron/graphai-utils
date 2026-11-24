@@ -44,7 +44,7 @@ jobs:
 
       - uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
 
       # knip resolves imports through the real dependency graph, so node_modules has to be
       # installed. --frozen-lockfile keeps CI honest against yarn.lock.
